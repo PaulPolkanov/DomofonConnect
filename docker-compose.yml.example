@@ -1,0 +1,71 @@
+version: "3.8"
+services:
+    app:
+      hostname: laravel-test-2-app
+      image: php:8.3-fpm
+      build:
+        context: .
+        dockerfile: .docker/php/Dockerfile
+      container_name: laravel-test-2-app
+      depends_on:
+        - db
+      volumes:
+        - ./app:/var/www/html
+      working_dir: /var/www/html
+      environment:
+      - COMPOSER_ALLOW_SUPERUSER=1
+    nginx:
+      image: nginx:latest
+      container_name: nginx
+      ports:
+        - "8090:80"
+      volumes:
+        - ./app:/var/www/html
+        - ./.docker/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+      depends_on:
+        - app
+    db:
+      hostname: laravel-test-2-mariadb
+      image: mariadb
+      container_name: laravel-test-2-mariadb
+      command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_520_ci
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_USER: laravel_user
+        MYSQL_PASSWORD: laravel_pass
+      volumes:
+        - './.docker/volume/mysql:/var/lib/mysql'
+      ports:
+         - 3337:3306
+    phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      container_name: laravel-test-2-phpmyadmin
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_USER: laravel_user
+        MYSQL_PASSWORD: laravel_pass
+      links:
+        - db:db
+      depends_on:
+        - db
+      ports:
+        - 7005:80
+    composer:
+      image: composer:latest
+      container_name: laravel-test-2-composer
+      volumes:
+        - .:/app
+      working_dir: /app/app
+    ngrok:
+      image: wernight/ngrok
+      container_name: ngrok
+      ports:
+        - "4040:4040"
+      environment:
+        NGROK_PORT: nginx:80
+        NGROK_AUTHTOKEN: secret_token
+      depends_on:
+        - nginx
+
+
+

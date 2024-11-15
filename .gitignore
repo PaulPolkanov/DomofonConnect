@@ -1,0 +1,4 @@
+/.docker/volume/mysql
+/app/vendor
+.vscode
+docker-compose.yml
