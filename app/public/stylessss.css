@@ -1,0 +1,127 @@
+/* Reset some default styles */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Basic layout and typography */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav ul {
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+.intercom-selection {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.intercom-selection h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.intercom-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.intercom-list li {
+    display: flex;
+    align-items: center;
+    background-color: #e0e0e0;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.intercom-list li:hover {
+    background-color: #d0d0d0;
+}
+
+.intercom-list li.selected {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.intercom-icon {
+    font-size: 24px;
+    margin-right: 20px;
+}
+
+.intercom-details h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.intercom-details p {
+    margin-bottom: 5px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 40px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header nav ul {
+        margin-top: 10px;
+    }
+
+    .intercom-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .intercom-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
