@@ -14,7 +14,7 @@ class miniAppTelegramController extends Controller
             $userdata = ChatUser::where('chat_id', $request->chat_id)->first();
             if($userdata->phone){
                 $idTenant = TenantService::checkTenant($userdata->phone);
-                if( !$idTenant['error']){
+                if( !isset($idTenant['error'])){
                     $dataApartment = TenantService::getApartment($idTenant);
                     $arayDomofons = TenantService::getDomofons($idTenant, $dataApartment[0]['id']);
                     $arrPhotoDomofon = [];

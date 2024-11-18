@@ -43,7 +43,7 @@ class Handler extends WebhookHandler
         $chat = TelegraphChat::find($chatId);
         Telegraph::chat($chatId)->message("Нажмите на кнопку, чтобы открыть мини-приложение.")->keyboard(
             Keyboard::make()->buttons([
-                Button::make("Открыть мини-приложение\n DomofonConnect ")->webApp("https://18f6-176-115-148-107.ngrok-free.app?chat_id=$chatId"),
+                Button::make("Открыть мини-приложение\n DomofonConnect ")->webApp("https://8923-178-176-231-217.ngrok-free.app?chat_id=$chatId"),
             ])
         )->send();
     }

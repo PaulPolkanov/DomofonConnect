@@ -58,7 +58,7 @@ return [
         /**
          * maximum allowed simultaneous connections to the webhook (defaults to 40)
          */
-        'max_connections' => env('TELEGRAPH_WEBHOOK_MAX_CONNECTIONS', 40),
+        'max_connections' => 500,
 
         /**
          * List of event types for which the webhook should fire.
